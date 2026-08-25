@@ -1,6 +1,7 @@
 ﻿using GFBA.Communication.Requests;
 using GFBA.Communication.Responses;
 using GFBA.Domain.Entities;
+using GFBA.Domain.Security.Cripitography;
 using GFBA.Domain.Security.Tokens;
 using GFBA.Exception.Exceptions;
 using Mapster;
@@ -9,10 +10,12 @@ namespace GFBA.Application.UseCases.Usuarios.Registrar;
 public class RegistrarUsuarioUseCase : IRegistrarUsuarioUseCase
 {
     private readonly IAccessTokenGenerator _accessTokenGenerator;
+    private readonly IPasswordHasher _passwordHasher;
 
-    public RegistrarUsuarioUseCase(IAccessTokenGenerator accessTokenGenerator)
+    public RegistrarUsuarioUseCase(IAccessTokenGenerator accessTokenGenerator, IPasswordHasher passwordHasher)
     {
         _accessTokenGenerator = accessTokenGenerator;
+        _passwordHasher = passwordHasher;
     }
     public async Task<ResponseRegistrarUsuarioJson> Executar(RequestRegistrarUsuarioJson request)
     {
@@ -20,7 +23,7 @@ public class RegistrarUsuarioUseCase : IRegistrarUsuarioUseCase
 
         var user = request.Adapt<User>();
 
-        //Hashear a senha do usuário usando o ArgonId
+        user.Senha = _passwordHasher.HashPassword(request.Senha);
 
         return new ResponseRegistrarUsuarioJson
         {

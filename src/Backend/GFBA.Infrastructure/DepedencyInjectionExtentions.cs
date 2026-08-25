@@ -1,4 +1,6 @@
-﻿using GFBA.Domain.Security.Tokens;
+﻿using GFBA.Domain.Security.Cripitography;
+using GFBA.Domain.Security.Tokens;
+using GFBA.Infrastructure.Security.Criptography;
 using GFBA.Infrastructure.Security.Tokens;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,6 +11,8 @@ public static class DepedencyInjectionExtentions
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         AddToken(services, configuration);
+
+        services.AddScoped<IPasswordHasher, PasswordHashing>();
     }
 
     private static void AddToken(IServiceCollection services, IConfiguration configuration)
