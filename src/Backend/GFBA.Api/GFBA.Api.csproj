@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Mapster" Version="10.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.19" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.19" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\GFBA.Communication\GFBA.Communication.csproj" />
+    <ProjectReference Include="..\GFBA.Application\GFBA.Application.csproj" />
+    <ProjectReference Include="..\GFBA.Domain\GFBA.Domain.csproj" />
+    <ProjectReference Include="..\GFBA.Infrastructure\GFBA.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
