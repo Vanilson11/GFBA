@@ -1,5 +1,7 @@
 using GFBA.Api.Filters;
+using GFBA.Api.Tokens;
 using GFBA.Application.UseCases;
+using GFBA.Domain.Security.Tokens;
 using GFBA.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -13,6 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen(config =>
 {
     config.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -65,6 +68,10 @@ builder.Services.AddAuthentication(config => {
     };
 });
 
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddScoped<ITokenProvider, HttpContextTokenValue>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -72,6 +79,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.MapOpenApi();
 }
 
 app.UseHttpsRedirection();
@@ -81,4 +89,13 @@ app.UseAuthentication();
 
 app.MapControllers();
 
+await MigrateDataBase();
+
 app.Run();
+
+async Task MigrateDataBase()
+{
+    await using var scope = app.Services.CreateAsyncScope();
+
+    DatabaseMigration.MigrateDatabase(scope.ServiceProvider);
+}

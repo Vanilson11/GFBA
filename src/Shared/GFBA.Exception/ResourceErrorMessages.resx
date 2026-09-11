@@ -192,4 +192,19 @@
   <data name="SENHA_INVALIDA" xml:space="preserve">
     <value>Sua senha deve ter, no mínimo, 8 caracteres, contendo uma letra maiúscula, uma minúscula, um número e um caractere especial (ex: ., !, ?, *, #).</value>
   </data>
+  <data name="USUARIO_COM_EMAIL_REGISTRADO" xml:space="preserve">
+    <value>Usuário já registrado com o e-mail informado.</value>
+  </data>
+  <data name="USUARIO_COM_MATRICULA_REGISTRADO" xml:space="preserve">
+    <value>Já existe um usuário registrado com a matrícula informada.</value>
+  </data>
+  <data name="SENHA_OBRIGATORIA" xml:space="preserve">
+    <value>A senha é obrigatória.</value>
+  </data>
+  <data name="USUARIO_NAO_ENCONTRADO" xml:space="preserve">
+    <value>Usuário não encontrado.</value>
+  </data>
+  <data name="LOGIN_INVALIDO" xml:space="preserve">
+    <value>E-mail ou senha incorretos.</value>
+  </data>
 </root>

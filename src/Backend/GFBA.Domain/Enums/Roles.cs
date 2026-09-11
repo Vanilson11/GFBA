@@ -2,5 +2,5 @@
 public class Roles
 {
     public const string ADM = "adm";
-    public const string ORIENTADOR = "orientador";
+    public const string ORIENTADOR = "ORIENTADOR";
 }

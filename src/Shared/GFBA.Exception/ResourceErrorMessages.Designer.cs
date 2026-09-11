@@ -160,6 +160,15 @@ namespace GFBA.Exception {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a E-mail ou senha incorretos..
+        /// </summary>
+        public static string LOGIN_INVALIDO {
+            get {
+                return ResourceManager.GetString("LOGIN_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a O número da matrícula deve ter no mínimo dez caracteres..
         /// </summary>
         public static string MATRICULA_DEZ_CARACTERES {
@@ -241,6 +250,15 @@ namespace GFBA.Exception {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a A senha é obrigatória..
+        /// </summary>
+        public static string SENHA_OBRIGATORIA {
+            get {
+                return ResourceManager.GetString("SENHA_OBRIGATORIA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Status inválido..
         /// </summary>
         public static string STATUS_INVALIDO {
@@ -282,6 +300,33 @@ namespace GFBA.Exception {
         public static string TURNO_INVALIDO {
             get {
                 return ResourceManager.GetString("TURNO_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Usuário já registrado com o e-mail informado..
+        /// </summary>
+        public static string USUARIO_COM_EMAIL_REGISTRADO {
+            get {
+                return ResourceManager.GetString("USUARIO_COM_EMAIL_REGISTRADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Já existe um usuário registrado com a matrícula informada..
+        /// </summary>
+        public static string USUARIO_COM_MATRICULA_REGISTRADO {
+            get {
+                return ResourceManager.GetString("USUARIO_COM_MATRICULA_REGISTRADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Usuário não encontrado..
+        /// </summary>
+        public static string USUARIO_NAO_ENCONTRADO {
+            get {
+                return ResourceManager.GetString("USUARIO_NAO_ENCONTRADO", resourceCulture);
             }
         }
     }

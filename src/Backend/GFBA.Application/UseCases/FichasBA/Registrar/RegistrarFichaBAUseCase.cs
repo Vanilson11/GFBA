@@ -1,15 +1,24 @@
 ﻿using GFBA.Communication.Requests;
 using GFBA.Communication.Responses;
 using GFBA.Domain.Entities;
+using GFBA.Domain.Services.LoggedUser;
 using GFBA.Exception.Exceptions;
 using Mapster;
 
 namespace GFBA.Application.UseCases.FichasBA.Registrar;
 public class RegistrarFichaBAUseCase : IRegistrarFichaBAUseCase
 {
+    private readonly ILoggedUser _loggedUser;
+
+    public RegistrarFichaBAUseCase(ILoggedUser loggedUser)
+    {
+        _loggedUser = loggedUser;
+    }
     public async Task<ResponseRegistrarFichaBAJson> Executar(RequestFichaBAJson request)
     {
         ValidarRequest(request);
+
+        var orientador = await _loggedUser.Get();
 
         var fichaBA = request.Adapt<FichaBA>();
 

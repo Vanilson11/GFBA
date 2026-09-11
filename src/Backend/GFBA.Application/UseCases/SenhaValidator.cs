@@ -3,7 +3,7 @@ using FluentValidation.Validators;
 using GFBA.Exception;
 using System.Text.RegularExpressions;
 
-namespace GFBA.Application.UseCases.Usuarios;
+namespace GFBA.Application.UseCases;
 public class SenhaValidator<T> : PropertyValidator<T, string>
 {
     private const string ERROR_MESSAGE_KEY = "ErrorMessage";
@@ -18,7 +18,7 @@ public class SenhaValidator<T> : PropertyValidator<T, string>
     {
         if (string.IsNullOrWhiteSpace(senha))
         {
-            context.MessageFormatter.AppendArgument(ERROR_MESSAGE_KEY, ResourceErrorMessages.SENHA_INVALIDA);
+            context.MessageFormatter.AppendArgument(ERROR_MESSAGE_KEY, ResourceErrorMessages.SENHA_OBRIGATORIA);
             return false;
         }
 

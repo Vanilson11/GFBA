@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace GFBA.Api.Controllers;
 [Route("[controller]")]
 [ApiController]
-[Authorize(Roles = Roles.ORIENTADOR)]
+[Authorize(Roles = Roles.ORIENTADOR)]//aqui está dando erro
 public class FichasController : ControllerBase
 {
     [HttpPost]

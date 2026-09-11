@@ -16,7 +16,7 @@ internal class JwtTokenGenerator : IAccessTokenGenerator
         _expirationTimeMinutes = expirationTimeMinutes;
         _signinKey = signinKey;
     }
-    public string Generate(User user)
+    public string Generate(Usuario user)
     {
         var claims = new List<Claim>
         {
