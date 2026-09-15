@@ -1,11 +1,13 @@
 ﻿using FluentMigrator.Runner;
 using GFBA.Domain.Repositories;
+using GFBA.Domain.Repositories.FichaBA;
 using GFBA.Domain.Repositories.Usuarios;
 using GFBA.Domain.Security.Cripitography;
 using GFBA.Domain.Security.Tokens;
 using GFBA.Domain.Services.LoggedUser;
 using GFBA.Infrastructure.DataAccess;
 using GFBA.Infrastructure.DataAccess.Repositories;
+using GFBA.Infrastructure.DataAccess.Repositories.FichaBA;
 using GFBA.Infrastructure.DataAccess.Repositories.Usuarios;
 using GFBA.Infrastructure.Security.Criptography;
 using GFBA.Infrastructure.Security.Tokens;
@@ -67,5 +69,6 @@ public static class DepedencyInjectionExtentions
         services.AddScoped<IUnitOffWork, UnitOffWork>();
         services.AddScoped<IWriteOnlyUsuariosRepository, UsuariosRepository>();
         services.AddScoped<IReadOnlyUsuariosRepository, UsuariosRepository>();
+        services.AddScoped<IWriteOnlyFichaBaRepository, FichaBaRepository>();
     }
 }

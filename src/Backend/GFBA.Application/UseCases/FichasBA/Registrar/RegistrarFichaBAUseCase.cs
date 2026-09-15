@@ -1,6 +1,8 @@
 ﻿using GFBA.Communication.Requests;
 using GFBA.Communication.Responses;
 using GFBA.Domain.Entities;
+using GFBA.Domain.Repositories;
+using GFBA.Domain.Repositories.FichaBA;
 using GFBA.Domain.Services.LoggedUser;
 using GFBA.Exception.Exceptions;
 using Mapster;
@@ -9,10 +11,14 @@ namespace GFBA.Application.UseCases.FichasBA.Registrar;
 public class RegistrarFichaBAUseCase : IRegistrarFichaBAUseCase
 {
     private readonly ILoggedUser _loggedUser;
+    private readonly IWriteOnlyFichaBaRepository _writeOnlyFichaBaRepository;
+    private readonly IUnitOffWork _unitOffWork;
 
-    public RegistrarFichaBAUseCase(ILoggedUser loggedUser)
+    public RegistrarFichaBAUseCase(ILoggedUser loggedUser, IWriteOnlyFichaBaRepository writeOnlyFichaBaRepository, IUnitOffWork unitOffWork)
     {
         _loggedUser = loggedUser;
+        _writeOnlyFichaBaRepository = writeOnlyFichaBaRepository;
+        _unitOffWork = unitOffWork;
     }
     public async Task<ResponseRegistrarFichaBAJson> Executar(RequestFichaBAJson request)
     {
@@ -22,7 +28,11 @@ public class RegistrarFichaBAUseCase : IRegistrarFichaBAUseCase
 
         var fichaBA = request.Adapt<FichaBA>();
 
-        //recuperar o id do orientador logado e o atribuir à fichaBA
+        fichaBA.IdOrientador = orientador.Id;
+
+        await _writeOnlyFichaBaRepository.Add(fichaBA);
+
+        await _unitOffWork.Commit();
 
         return new ResponseRegistrarFichaBAJson()
         {

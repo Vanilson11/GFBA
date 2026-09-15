@@ -14,6 +14,6 @@ public class FichaBA
     public Motivo Motivo { get; set; }
     public Status Status { get; set; } 
     public string Observacoes { get; set; } = string.Empty;
-    public Cargo Orientador { get; set; } = Cargo.ORIENTADOR;
-    public IList<AcaoBA> AcoesBA { get; set; } = [];
+    public Guid IdOrientador { get; set; }
+    public ICollection<AcaoBA> AcoesBA { get; set; } = [];
 }

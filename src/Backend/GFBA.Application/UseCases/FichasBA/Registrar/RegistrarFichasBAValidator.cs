@@ -27,9 +27,5 @@ public class RegistrarFichasBAValidator : AbstractValidator<RequestFichaBAJson>
         RuleFor(request => request.Motivo).IsInEnum().WithMessage(ResourceErrorMessages.MOTIVO_INVALIDO);
         RuleFor(request => request.Status).IsInEnum().WithMessage(ResourceErrorMessages.STATUS_INVALIDO);
         RuleFor(request => request.Observacoes).MaximumLength(500).WithMessage(ResourceErrorMessages.OBSERVACOES_MAXIMO_QUINHENTOS_CARACTERES);
-        RuleForEach(request => request.AcoesBA).SetValidator(new AcaoBAValidator());
-        //como AcoesBA é uma lista, deve-se usar RuleForEach, pois RuleFor é só para um único objeto
-        //RuleForEach itera sobre cada elemento da coleção e aplica as regras de validação em cada um separadamente
-        //O SetValidator serve pra dizer: "para cada item dessa coleção (ou pra uma propriedade específica), use este outro AbstractValidator<T> pra validar"
     }
 }

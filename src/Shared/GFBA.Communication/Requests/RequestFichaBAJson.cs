@@ -1,5 +1,4 @@
 ﻿using GFBA.Communication.Enums;
-using GFBA.Domain.Entities;
 
 namespace GFBA.Communication.Requests;
 public class RequestFichaBAJson
@@ -14,5 +13,4 @@ public class RequestFichaBAJson
     public Motivo Motivo { get; set; }
     public Status Status { get; set; }
     public string Observacoes { get; set; } = string.Empty;
-    public IList<AcaoBA> AcoesBA { get; set; } = [];
 }
