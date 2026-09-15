@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
-using GFBA.Domain.Entities;
+using GFBA.Communication.Requests;
 using GFBA.Exception;
 
-namespace GFBA.Application.UseCases.FichasBA;
-public class AcaoBAValidator : AbstractValidator<AcaoBA>
+namespace GFBA.Application.UseCases.AcaoBA;
+public class AcaoBAValidator : AbstractValidator<RequestRegistrarAcaoBaJson>
 {
     public AcaoBAValidator()
     {
