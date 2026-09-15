@@ -2,7 +2,7 @@
 
 namespace GFBA.Infrastructure.Migrations.Versions;
 
-[Migration(MigrationVersions.TABLE_USERS, "Creating table users")]
+[Migration(MigrationVersions.CREATE_TABLE_USERS, "Creating table users")]
 public class Version0000001 : ForwardOnlyMigration
 {
     public override void Up()

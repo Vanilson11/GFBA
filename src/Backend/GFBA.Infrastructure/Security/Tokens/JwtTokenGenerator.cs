@@ -18,11 +18,12 @@ internal class JwtTokenGenerator : IAccessTokenGenerator
     }
     public string Generate(Usuario user)
     {
+        var cargo = user.Cargo.ToString();
         var claims = new List<Claim>
         {
             new Claim(ClaimTypes.Name, user.Nome),
             new Claim(ClaimTypes.Sid, user.Id.ToString()),
-            new Claim(ClaimTypes.Role, user.Cargo.ToString())
+            new Claim(ClaimTypes.Role, user.Permissao)
         };
 
         var tokenDescriptor = new SecurityTokenDescriptor
