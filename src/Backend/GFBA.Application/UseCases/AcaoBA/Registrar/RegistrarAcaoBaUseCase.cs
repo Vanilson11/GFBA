@@ -1,6 +1,7 @@
 ﻿using GFBA.Communication.Requests;
 using GFBA.Communication.Responses;
 using GFBA.Exception.Exceptions;
+using Mapster;
 
 namespace GFBA.Application.UseCases.AcaoBA.Registrar;
 public class RegistrarAcaoBaUseCase : IRegistrarAcaoBaUseCase
@@ -8,6 +9,8 @@ public class RegistrarAcaoBaUseCase : IRegistrarAcaoBaUseCase
     public async Task<ResponseRegistrarAcaoBaJson> Executar(RequestRegistrarAcaoBaJson request)
     {
         ValidarRequest(request);
+
+        var acaoBA = request.Adapt<Domain.Entities.AcaoBA>();
 
         return new ResponseRegistrarAcaoBaJson()
         {
